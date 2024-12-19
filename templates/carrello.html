@@ -11,7 +11,7 @@
                 
                 <!-- Название и цена -->
                 <h2 style="color: rgb(255, 119, 0); margin-top: 10px;">{{ prodotto.nome }}</h2>
-                <p style="font-size: 1.2rem; font-weight: bold; margin: 10px 0;">Prezzo: €{{ prodotto.prezzo|round(2) }}</p>
+                <p style="font-size: 1.2rem; font-weight: bold; margin: 10px 0;">Prezzo: €{{ "%.2f"|format(prodotto.prezzo) }}</p>
                 
                 <!-- Кнопка удаления продукта -->
                 <a href="/rimuovi/{{ prodotto.nome }}" class="btn" style="background-color: #c70039; color: white; padding: 8px 12px; border-radius: 5px; text-decoration: none;">
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Секция с итоговой суммой и кнопками -->
-    <p style="text-align: center; font-size: 1.5rem; font-weight: bold; margin-top: 20px;">Totale: €{{ totale|round(2) }}</p>
+    <p style="text-align: center; font-size: 1.5rem; font-weight: bold; margin-top: 20px;">Totale: €{{ "%.2f"|format(totale) }}</p>
     <div style="text-align: center; margin-top: 20px;">
         <a href="/checkout" class="btn" style="background-color: #28a745; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-right: 10px;">
             Vai al Checkout

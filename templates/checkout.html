@@ -10,7 +10,7 @@
         <!-- Заголовок и итоговая сумма -->
         <h2 style="margin-bottom: 15px; font-size: 1.8rem; color: #333;">Totale da Pagare</h2>
         <p style="font-size: 2rem; font-weight: bold; color: #28a745; margin-bottom: 20px;">
-            €{{ totale|round(2) }}
+            €{{ "%.2f"|format(totale) }}
         </p>
         
         <!-- Форма для оплаты -->

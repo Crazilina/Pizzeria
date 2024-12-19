@@ -14,7 +14,7 @@
         </h2>
         
         <!-- Цена -->
-        <p style="font-size: 1.2rem; font-weight: bold;">Prezzo: €{{ prodotto.prezzo|round(2) }}</p>
+        <p style="font-size: 1.2rem; font-weight: bold;">Prezzo: €{{ "%.2f"|format(prodotto.prezzo) }}</p>
         
         <!-- Кнопка добавления в корзину -->
         <button class="btn" onclick="aggiungiAlCarrello('{{ prodotto.nome }}')" style="background-color: rgb(255, 119, 0); color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
