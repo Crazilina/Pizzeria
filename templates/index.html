@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Баннер с изображением на всю ширину -->
+<div style="width: 100%; height: 60vh; position: relative; overflow: hidden;">
+    <img src="/static/images/restaurant_home.jpg" alt="Benvenuto nel ristorante"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <!-- Текст на изображении -->
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center;
+                padding: 20px; border-radius: 10px;">
+        <h1 style="font-size: 3rem; margin: 0;">Benvenuto nel nostro ristorante!</h1>
+        <p style="font-size: 1.5rem; margin-top: 10px;">Scopri il nostro menu e fai il tuo ordine!</p>
+        <div style="margin-top: 20px;">
+            <a href="/prodotti" class="btn" style="background-color: rgb(255, 119, 0); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Visualizza Prodotti</a>
+            <a href="/carrello" class="btn" style="background-color: #28a745; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-left: 10px;">Vai al Carrello</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% set breadcrumb = [] %}
+{% set title = "Home" %}

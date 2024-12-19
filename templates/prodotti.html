@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center;">Le Nostre Pizze</h1>
+<div class="container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+    {% for prodotto in prodotti %}
+    <div class="card" style="width: 300px; border: 1px solid #ddd; border-radius: 10px; padding: 15px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-align: center;">
+        <!-- Фото пиццы -->
+        <img src="/static/images/{{ prodotto.foto }}" alt="{{ prodotto.nome }}" style="width: 100%; height: auto; border-radius: 10px;">
+        
+        <!-- Название пиццы с ссылкой на детали -->
+        <h2 style="margin-top: 10px; color: rgb(255, 119, 0);">
+            <a href="/prodotti/{{ prodotto.nome }}" style="text-decoration: none; color: white;">{{ prodotto.nome }}</a>
+        </h2>
+        
+        <!-- Цена -->
+        <p style="font-size: 1.2rem; font-weight: bold;">Prezzo: €{{ prodotto.prezzo|round(2) }}</p>
+        
+        <!-- Кнопка добавления в корзину -->
+        <button class="btn" onclick="aggiungiAlCarrello('{{ prodotto.nome }}')" style="background-color: rgb(255, 119, 0); color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
+            Aggiungi al Carrello
+        </button>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% set breadcrumb = [{"name": "Prodotti", "url": "/prodotti"}] %}
+{% set title = "Prodotti" %}

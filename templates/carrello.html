@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center; margin-bottom: 20px;">Il Tuo Carrello</h1>
+{% if carrello %}
+    <div class="container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        {% for prodotto in carrello %}
+            <div class="card" style="width: 300px; border: 1px solid #ddd; border-radius: 10px; padding: 15px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-align: center;">
+                <!-- Фото продукта -->
+                <img src="/static/images/{{ prodotto.foto }}" alt="{{ prodotto.nome }}" style="width: 100%; height: auto; border-radius: 10px;">
+                
+                <!-- Название и цена -->
+                <h2 style="color: rgb(255, 119, 0); margin-top: 10px;">{{ prodotto.nome }}</h2>
+                <p style="font-size: 1.2rem; font-weight: bold; margin: 10px 0;">Prezzo: €{{ prodotto.prezzo|round(2) }}</p>
+                
+                <!-- Кнопка удаления продукта -->
+                <a href="/rimuovi/{{ prodotto.nome }}" class="btn" style="background-color: #c70039; color: white; padding: 8px 12px; border-radius: 5px; text-decoration: none;">
+                    Rimuovi
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Секция с итоговой суммой и кнопками -->
+    <p style="text-align: center; font-size: 1.5rem; font-weight: bold; margin-top: 20px;">Totale: €{{ totale|round(2) }}</p>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="/checkout" class="btn" style="background-color: #28a745; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-right: 10px;">
+            Vai al Checkout
+        </a>
+        <a href="/svuota_carrello" class="btn" style="background-color: #dc3545; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+            Svuota il Carrello
+        </a>
+    </div>
+{% else %}
+    <!-- Если корзина пуста -->
+    <p style="text-align: center; font-size: 1.2rem; color: #555;">Il tuo carrello è vuoto.</p>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="/prodotti" class="btn" style="background-color: #ff5733; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+            Torna ai Prodotti
+        </a>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% set breadcrumb = [{"name": "Carrello", "url": "/carrello"}] %}
+{% set title = "Carrello" %}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container-header">
+            <h1><a href="/">Ristorante</a></h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/prodotti">Prodotti</a></li>
+                    <li><a href="/inserisci">Inserisci Prodotti</a></li>
+                    <li>
+                        <a href="/carrello" class="cart-link">
+                            Carrello
+                            <span id="cart-count" class="cart-count">{{ carrello|length }}</span>
+                        </a>
+                    </li>
+                    <li><a href="/checkout">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/">Home</a>
+        {% for item in breadcrumb %}
+            <span>></span>
+            {% if not loop.last %}
+                <a href="{{ item.url }}">{{ item.name }}</a>
+            {% else %}
+                <span>{{ item.name }}</span>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Ristorante. Tutti i diritti riservati.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        async function aggiungiAlCarrello(nome) {
+            try {
+                const response = await fetch(`/aggiungi/${nome}/ajax`, { method: "POST" });
+                const data = await response.json();
+                if (data.success) {
+                    // Обновляем индикатор корзины
+                    document.getElementById("cart-count").innerText = data.cart_count;
+                } else {
+                    alert(data.message || "Errore durante l'aggiunta al carrello.");
+                }
+            } catch (error) {
+                console.error("Errore:", error);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+    <!-- Фото пиццы -->
+    <img src="/static/images/{{ prodotto.foto }}" alt="{{ prodotto.nome }}" style="width: 100%; height: auto; border-radius: 10px;">
+
+    <!-- Название пиццы -->
+    <h1 style="color: rgb(255, 119, 0); margin-top: 20px;">{{ prodotto.nome }}</h1>
+    
+    <!-- Цена пиццы -->
+    <p style="font-size: 1.2rem; font-weight: bold;">Prezzo: €{{ prodotto.prezzo|round(2) }}</p>
+    
+    <!-- Описание и ингредиенты -->
+    <div class="descrizione" style="margin-bottom: 20px;">
+        <h3 style="font-weight: bold; margin-bottom: 10px;">Ingredienti</h3>
+        <ol style="text-align: left; display: inline-block; margin: auto; list-style: decimal; padding-left: 20px;">
+            {% for ingrediente in prodotto.ingredienti %}
+            <li>{{ ingrediente }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+    
+    <!-- Кнопка добавления в корзину и возврат -->
+    <button class="btn" onclick="aggiungiAlCarrello('{{ prodotto.nome }}')" style="background-color: rgb(255, 119, 0); color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
+        Aggiungi al Carrello
+    </button>
+    <a href="/prodotti" class="btn" style="display: block; margin-top: 10px; text-decoration: none; color: #333; font-weight: bold;">
+        Torna ai Prodotti
+    </a>
+</div>
+{% endblock %}

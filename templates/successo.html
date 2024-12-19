@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Баннер на всю ширину -->
+<div style="width: 100%; height: 60vh; background-color: #f8f9fa; position: relative; overflow: hidden; text-align: center;">
+    <img src="/static/images/success_banner.jpg" alt="Pagamento Completato"
+         style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+    <!-- Текст на баннере -->
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                background-color: rgba(0, 0, 0, 0.6); color: white; padding: 20px 30px;
+                border-radius: 10px; max-width: 80%;">
+        <h1 style="font-size: 3rem; margin-bottom: 10px;">Pagamento Completato</h1>
+        <p style="font-size: 1.5rem;">Grazie per il tuo acquisto! Il pagamento è stato completato con successo.</p>
+    </div>
+</div>
+
+<!-- Кнопки для возврата -->
+<div style="text-align: center; margin-top: 30px;">
+    <a href="/" class="btn" 
+       style="background-color: #28a745; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+        Torna alla Home
+    </a>
+    <a href="/prodotti" class="btn" 
+       style="background-color: #ff5733; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-left: 10px;">
+        Sfoglia Altri Prodotti
+    </a>
+</div>
+{% endblock %}
+
+{% set breadcrumb = [{"name": "Successo", "url": "/successo"}] %}
+{% set title = "Pagamento Completato" %}

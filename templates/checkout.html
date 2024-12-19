@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center; margin-bottom: 20px; color: #ff5733;">Checkout</h1>
+
+{% if totale > 0 %}
+    <div class="card" style="max-width: 500px; margin: auto; padding: 20px; text-align: center; 
+                            border: 1px solid #ddd; border-radius: 10px; 
+                            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <!-- Заголовок и итоговая сумма -->
+        <h2 style="margin-bottom: 15px; font-size: 1.8rem; color: #333;">Totale da Pagare</h2>
+        <p style="font-size: 2rem; font-weight: bold; color: #28a745; margin-bottom: 20px;">
+            €{{ totale|round(2) }}
+        </p>
+        
+        <!-- Форма для оплаты -->
+        <form action="/successo" method="get">
+            <button type="submit" class="btn" 
+                    style="background-color: #28a745; color: white; border: none; 
+                           padding: 15px 30px; font-size: 1.2rem; border-radius: 5px; cursor: pointer;">
+                Paga Ora
+            </button>
+        </form>
+    </div>
+{% else %}
+    <!-- Сообщение для пустого чекаута -->
+    <p style="text-align: center; font-size: 1.2rem; color: #555; margin-top: 20px;">
+        Il tuo carrello è vuoto. Torna ai prodotti per aggiungere qualcosa.
+    </p>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="/prodotti" class="btn" 
+           style="background-color: #ff5733; color: white; padding: 10px 20px; 
+                  text-decoration: none; border-radius: 5px;">
+            Torna ai Prodotti
+        </a>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% set breadcrumb = [{"name": "Checkout", "url": "/checkout"}] %}
+{% set title = "Checkout" %}

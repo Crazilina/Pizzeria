@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center; margin-bottom: 20px;">Inserisci Nuova Pizza</h1>
+<form method="POST" action="/inserisci" style="max-width: 600px; margin: auto;">
+    <div style="margin-bottom: 15px;">
+        <label for="nome" style="font-weight: bold;">Nome della Pizza:</label>
+        <input type="text" id="nome" name="nome" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label for="prezzo" style="font-weight: bold;">Prezzo (€):</label>
+        <input type="number" step="0.01" id="prezzo" name="prezzo" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label for="foto" style="font-weight: bold;">Nome del File della Foto:</label>
+        <input type="text" id="foto" name="foto" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label for="ingredienti" style="font-weight: bold;">Ingredienti (separati da virgola):</label>
+        <input type="text" id="ingredienti" name="ingredienti" required
+               placeholder="Esempio: Mozzarella, Pomodoro, Basilico" 
+               style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        <button type="submit" class="btn" style="background-color: #28a745; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Aggiungi Pizza</button>
+    </div>
+</form>
+{% endblock %}
